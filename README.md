@@ -1,36 +1,24 @@
-# AI-Buddy# Project Companion AI
+# AI-Companion
 
-A personalized conversational AI designed to function as a supportive companion, mentor, and friend. Built using Python, Chainlit, Google Gemini, and SQLite.
+A personalized, voice-first conversational AI designed to be a supportive companion, mentor, and friend. This project uses a hybrid architecture, combining the power of a cloud-based LLM with high-quality, locally-run models for audio processing to ensure privacy, speed, and zero cost for STT/TTS.
 
-## Current Status (Updated - April 10, 2025)
+## Core Technology Stack
 
-*   **Core Structure:** Project structure established with Python.
-*   **UI:** Basic chat interface implemented using Chainlit.
-*   **LLM:** Connected to the Google Gemini API (specifically `gemini-1.5-flash-latest`) for language understanding and generation.
-*   **Memory:** Persistent memory system implemented using SQLite.
-    *   Database schema includes tables for `user_profile`, `conversation_summaries`, and `ai_insights`.
-    *   Implemented saving & retrieval for all three memory types:
-        *   **User Profile Facts:** Extracts and stores key facts about the user.
-        *   **Conversation Summaries:** Generates and stores summaries of interaction turns.
-        *   **AI Insights:** Generates and stores AI's reflective insights on the conversation/user.
-*   **Interaction:** Basic text-based request-response loop functioning.
-*   **Prompt Engineering:** System prompt refined iteratively to encourage more natural conversation, better context awareness, subtle memory usage, and reduced repetition.
-*   **API Key Handling:** Uses `.env` file (ignored by Git) for API key management via `python-dotenv`.
+*   **"The Brain" (LLM):** Google Gemini 1.5 Flash (via API)
+*   **Speech-to-Text (STT):** OpenAI's Whisper (running locally)
+*   **Text-to-Speech (TTS):** Piper TTS (running locally)
+*   **Orchestration:** A custom Python script using `asyncio` and `pyaudio`.
 
-*(Note: STT/TTS functionality was attempted but paused due to framework issues)*.
+## Project Setup
 
-## Goals (from Briefing Document)
+Follow these steps to get the project running locally.
 
-*   Develop an emergent, evolving personality.
-*   Maintain robust long-term memory of interactions and user details.
-*   Enable natural, multimodal conversation (Text, TTS, STT).
-*   Future goals: Visual input, computer control, avatar integration.
+### 1. Clone the Repository
+Clone this repository to your local machine.
 
-## Setup & Running
+### 2. Create and Activate Virtual Environment
+From the project's root directory (`AI-Companion`), create and activate a Python virtual environment. This keeps the project's dependencies isolated.
 
-1.  Clone the repository.
-2.  Create a Python virtual environment: `python -m venv venv`
-3.  Activate the environment: `source venv/bin/activate` (Linux/macOS) or `.\venv\Scripts\activate` (Windows)
-4.  Install dependencies: `pip install -r requirements.txt`
-5.  Create a `.env` file in the root directory and add your Google API key: `GOOGLE_API_KEY="YOUR_API_KEY"`
-6.  Run the Chainlit app: `chainlit run main.py -w`
+**Create:**
+```bash
+python -m venv .venv
